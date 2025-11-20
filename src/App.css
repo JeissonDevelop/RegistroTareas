@@ -1,42 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #333;
+  height: 100%;
+  width: 100%;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  background-color: #333;
+  color: white;
   padding: 2rem;
+  text-align: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow-y: auto;
+  background-color: #333;
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #5f5f5f;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-item {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.task-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-time {
+  font-weight: 500;
+  color: #999;
+  font-size: 0.85rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.task-description {
+  color: #ddd;
+  margin-top: 0;
+  font-size: 0.9rem;
+
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  width: 100%;
+  flex-shrink: 0;
 }
