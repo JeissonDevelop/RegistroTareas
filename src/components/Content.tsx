@@ -1,57 +1,73 @@
 import React from 'react';
 
-const Content: React.FC=() => {
+interface TaskItemProps {
+  imageSrc: string;
+  imageAlt: string;
+  time: string;
+  iconClass: string;
+  description: string;
+}
 
-    return (
-        <>
-        <div className="tasks-container">
-          <div className="task-item">
-            <div className="task-image">
-              <img
-                alt="Francisca"
-                src="/assets/img/francisca.jpg"
-                className="task-image"
-              />
-            </div>
-            <span className="task-time"><i className="fas fa-fork-knife"></i> Hace una hora</span>
-            <p className="task-description">Fui a comer con amigos</p>
-          </div>
-          <div className="task-item">
-            <div className="task-image">
-              <img
-                alt="Paco"
-                src="/assets/img/paco.jpg"
-                className="task-image"
-              />
-            </div>
-            <span className="task-time"><i className="fas fa-book"></i> 10:00 am</span>
-            <p className="task-description">Leí un artículo sobre tecnología</p>
-          </div>
-          <div className="task-item">
-            <div className="task-image">
-              <img
-                alt="Quica"
-                src="/assets/img/quica.jpg"
-                className="task-image"
-              />
-            </div>
-            <span className="task-time"><i className="fas fa-pen"></i> 10:00 am</span>
-            <p className="task-description">Escribí notas sobre un proyecto importante</p>
-          </div>
-          <div className="task-item">
-            <div className="task-image">
-              <img
-                alt="Curro"
-                src="/assets/img/curro.jpg"
-                className="task-image"
-              />
-            </div>
-            <span className="task-time"><i className="fas fa-file-powerpoint"></i> 2:21 pm</span>
-            <p className="task-description">Preparé la presentación para la reunión de mañana</p>
-          </div>
-        </div>
-      </>
-    );
-  }
+const TaskItem: React.FC<TaskItemProps> = ({ imageSrc, imageAlt, time, iconClass, description }) => {
+  return (
+    <div className="task-item">
+      <div className="task-image">
+        <img alt={imageAlt} src={imageSrc} className="task-image" />
+      </div>
+      <span className="task-time">
+        <i className={iconClass}></i> {time}
+      </span>
+      <p className="task-description">{description}</p>
+    </div>
+  );
+};
+
+const Content: React.FC = () => {
+  const tasks = [
+    {
+      imageSrc: "/assets/img/francisca.jpg",
+      imageAlt: "Francisca",
+      time: "Hace una hora",
+      iconClass: "fas fa-fork-knife",
+      description: "Fui a comer con amigos"
+    },
+    {
+      imageSrc: "/assets/img/paco.jpg",
+      imageAlt: "Paco",
+      time: "10:00 am",
+      iconClass: "fas fa-book",
+      description: "Leí un artículo sobre tecnología"
+    },
+    {
+      imageSrc: "/assets/img/quica.jpg",
+      imageAlt: "Quica",
+      time: "10:00 am",
+      iconClass: "fas fa-pen",
+      description: "Escribí notas sobre un proyecto importante"
+    },
+    {
+      imageSrc: "/assets/img/curro.jpg",
+      imageAlt: "Curro",
+      time: "2:21 pm",
+      iconClass: "fas fa-file-powerpoint",
+      description: "Preparé la presentación para la reunión de mañana"
+    }
+  ];
+
+  return (
+    <div className="tasks-container">
+      {tasks.map((task, index) => (
+        <TaskItem
+          key={index}
+          imageSrc={task.imageSrc}
+          imageAlt={task.imageAlt}
+          time={task.time}
+          iconClass={task.iconClass}
+          description={task.description}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default Content;
