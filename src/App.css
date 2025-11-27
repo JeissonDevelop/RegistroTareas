@@ -4,17 +4,33 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #333;
-  height: 100%;
-  width: 100%;
+:root {
+  /* Colores elegantes */
+  --primary-dark: #0f1117;
+  --secondary-dark: #161b22;
+  --tertiary-dark: #1c2128;
+  --border-color: #30363d;
+  --accent-light: #e6f2ff;
+  --accent-primary: #79c0ff;
+  --accent-secondary: #a5d6ff;
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --success: #3fb950;
+  --success-light: #238636;
 }
 
-#root {
-  height: 100%;
-  width: 100%;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+  color: var(--text-primary);
+  width: 100vw;
 }
+
+
 
 .app {
   display: flex;
@@ -134,4 +150,392 @@ html, body {
   transform: translateY(-50%);
   color: #999;
   pointer-events: none;
+}
+
+
+.reloj-main {
+  width: 100%;
+  max-width: 1200px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reloj-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.reloj-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(121, 192, 255, 0.1);
+}
+
+.reloj-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.reloj-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Sección del Reloj */
+.reloj-section {
+  display: flex;
+  justify-content: center;
+}
+
+.clock-display {
+  background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--tertiary-dark) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 60px 40px;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  animation: clockPulse 2s ease-in-out infinite;
+}
+
+@keyframes clockPulse {
+  0%,
+  100% {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    box-shadow: 0 25px 70px rgba(121, 192, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
+.clock-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.clock-time {
+  font-size: 4rem;
+  font-weight: 300;
+  font-family: "Monaco", "Courier New", monospace;
+  color: var(--accent-primary);
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-shadow: 0 0 20px rgba(121, 192, 255, 0.3);
+}
+
+.btn-guardar {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: var(--primary-dark);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 30px rgba(121, 192, 255, 0.2);
+}
+
+.btn-guardar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(121, 192, 255, 0.3);
+}
+
+.btn-guardar:active {
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  display: inline-block;
+  font-size: 1.2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Sección de Instantes */
+.instantes-section {
+  height: 100%;
+  min-height: 500px;
+}
+
+.instantes-container {
+  background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--tertiary-dark) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 40px;
+  height: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+}
+
+.instantes-container.empty {
+  justify-content: center;
+  align-items: center;
+}
+
+.instantes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.instantes-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  letter-spacing: 0.5px;
+}
+
+.instantes-count {
+  background: var(--accent-primary);
+  color: var(--primary-dark);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  min-width: 40px;
+  text-align: center;
+}
+
+.instantes-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-right: 8px;
+}
+
+.instantes-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.instantes-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.instantes-list::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.instantes-list::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Elemento individual */
+.instante-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--tertiary-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.instante-item:hover {
+  background: rgba(121, 192, 255, 0.05);
+  border-color: var(--accent-primary);
+  transform: translateX(4px);
+}
+
+.instante-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--accent-primary);
+  color: var(--primary-dark);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.instante-time {
+  flex: 1;
+  font-family: "Monaco", "Courier New", monospace;
+  font-size: 1.1rem;
+  color: var(--accent-secondary);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.instante-badge {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  background: rgba(121, 192, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.empty-text {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.empty-subtext {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Botón Limpiar */
+.btn-limpiar {
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-limpiar:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  background: rgba(121, 192, 255, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reloj-title {
+    font-size: 2rem;
+  }
+
+  .reloj-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .instantes-section {
+    min-height: auto;
+  }
+
+  .clock-display {
+    max-width: 100%;
+  }
+
+  .clock-time {
+    font-size: 3rem;
+  }
+
+  .btn-guardar {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .reloj-title {
+    font-size: 1.5rem;
+  }
+
+  .reloj-header {
+    margin-bottom: 40px;
+  }
+
+  .clock-time {
+    font-size: 2.5rem;
+  }
+
+  .clock-display {
+    padding: 40px 20px;
+  }
+
+  .instantes-container {
+    padding: 20px;
+  }
 }

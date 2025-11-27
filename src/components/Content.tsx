@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import Header from "./Header";
 
 interface TaskItemProps {
   imageSrc: string;
@@ -8,7 +9,13 @@ interface TaskItemProps {
   description: string;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ imageSrc, imageAlt, time, iconClass, description }) => {
+const TaskItem: React.FC<TaskItemProps> = ({
+  imageSrc,
+  imageAlt,
+  time,
+  iconClass,
+  description,
+}) => {
   return (
     <div className="task-item">
       <div className="task-image">
@@ -29,33 +36,34 @@ const Content: React.FC = () => {
       imageAlt: "Francisca",
       time: "Hace una hora",
       iconClass: "fas fa-fork-knife",
-      description: "Fui a comer con amigos"
+      description: "Fui a comer con amigos",
     },
     {
       imageSrc: "/assets/img/paco.jpg",
       imageAlt: "Paco",
       time: "10:00 am",
       iconClass: "fas fa-book",
-      description: "Leí un artículo sobre tecnología"
+      description: "Leí un artículo sobre tecnología",
     },
     {
       imageSrc: "/assets/img/quica.jpg",
       imageAlt: "Quica",
       time: "10:00 am",
       iconClass: "fas fa-pen",
-      description: "Escribí notas sobre un proyecto importante"
+      description: "Escribí notas sobre un proyecto importante",
     },
     {
       imageSrc: "/assets/img/curro.jpg",
       imageAlt: "Curro",
       time: "2:21 pm",
       iconClass: "fas fa-file-powerpoint",
-      description: "Preparé la presentación para la reunión de mañana"
-    }
+      description: "Preparé la presentación para la reunión de mañana",
+    },
   ];
 
   return (
     <div className="tasks-container">
+      <Header />
       {tasks.map((task, index) => (
         <TaskItem
           key={index}
